@@ -1,0 +1,14 @@
+<h2>Items</h2>
+<h4>Search by Name:</h4>
+<%= form_tag( item_path , method: :get) do %>
+<%= select_tag "region", options_for_select(Region.all, Region.default) %>
+  <%= text_field_tag(:realm, params[:realm]) %>
+  <%= text_field_tag(:character_name, params[:character_name]) %>
+  <%= submit_tag ("Search") %>
+<% end %>
+<% @items.each do |item| %>
+  <ul>
+    <li><%= link_to item.name, item_path(item) %></li>
+    <br>
+  </ul>
+<% end %>
